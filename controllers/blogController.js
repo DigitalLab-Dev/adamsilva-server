@@ -111,8 +111,8 @@ export const getBlogs = async (req, res) => {
       hasNext: page < Math.ceil(totalBlogs / limit),
     });
   } catch (error) {
-    console.error('❌ Error fetching blogs:', error);
-    res.status(500).json({ message: 'Server error while fetching blogs' });
+  
+    res.status(500).json({ message: error.message|| 'Server error while fetching blogs' });
   }
 };
 
