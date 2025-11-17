@@ -2,10 +2,12 @@ import Blog from '../models/Blog.js';
 import cloudinary from '../configs/cloudinary.js';
 import { generateSlug } from '../utils/generateSlug.js';
 import { calculateReadingTime } from '../utils/calculateReadingTime.js';
+import { connectDB } from '../configs/db.js';
 
 export const createBlog = async (req, res) => {
   try {
     // Destructure the new 'impact' field from req.body
+    await connectDB();
     const { title, excerpt, content, category, impact } = req.body;
 
     // Check for all required fields, including 'impact'
@@ -68,6 +70,7 @@ export const createBlog = async (req, res) => {
 export const getBlogs = async (req, res) => {
   try {
     // Extract query params
+    await connectDB()
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 6;
     const search = req.query.search || '';

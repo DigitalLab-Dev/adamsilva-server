@@ -3,18 +3,12 @@ import cors from 'cors';
 import 'dotenv/config';
 import blogRouter from './routes/BlogRoutes.js';
 import mongoose from 'mongoose';
+import { connectDB } from './configs/db.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-mongoose
-  .connect(process.env.MONGODB_URL, {
-    family: 4,
-    serverSelectionTimeoutMS: 30000,
-    socketTimeoutMS: 75000,
-  })
-  .then(() => console.log('✅ MongoDB Connected'))
-  .catch((err) => console.error('❌ MongoDB Error:', err.message));
+connectDB()
 
 app.use(
   cors({
