@@ -72,7 +72,7 @@ export const getBlogs = async (req, res) => {
     // Extract query params
     await connectDB()
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 6;
+    const limit = parseInt(req.query.limit) || 10;
     const search = req.query.search || '';
     const category = req.query.category || 'all';
     // impact filtering can be added here if needed, but keeping original logic for simplicity
