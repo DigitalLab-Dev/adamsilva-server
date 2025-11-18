@@ -4,7 +4,7 @@ let isConnected = false;
 
 export async function connectDB() {
   if (isConnected) {
-    console.log("➡️ Using existing MongoDB connection");
+    console.log(" Using existing MongoDB connection");
     return;
   }
 
@@ -14,7 +14,7 @@ export async function connectDB() {
 
   try {
     const db = await mongoose.connect(process.env.MONGODB_URL, {
-      dbName: "yourdbname",
+      dbName: "adamsilva",
     });
 
     isConnected = db.connections[0].readyState === 1;
